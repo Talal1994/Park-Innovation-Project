@@ -32,17 +32,17 @@ Released   : 20121012
                 <table>
                     <tr>
                         <td>
-                            <img src="http://khattar-group.com/wp-content/uploads/2019/01/Khattar-Group-Logo.png" width="180" height="130">
+                            <img src="https://rinnoo.net/f/CMS/Listings/4883_1524723_580532172035743_1207853981_N_-_Qu80_RT1600x1024-_OS200x200-_RD200x200-.jpg" width="180" height="130">
                         </td>
                         <td width="130"></td>
                         
                         <td>
-                            <h1>KGC System</h1>
+                            <h1>MUBS - UMS</h1>
                         </td>
                     </tr>
                 </table>
 
-                <p>Khattar Group - Login Page</p>
+                <p>UMS - Login Page</p><br>
             </div>
         </div><br>
 
@@ -55,7 +55,7 @@ Released   : 20121012
                     <table>
                         <tr>
                             <td>UserName:</td>
-                            <td><input type="text" name="userName" required></td>
+                            <td><input type="text" name="userName" placeholder="student@mubs.edu.lb" required></td>
                         </tr>
                         <tr>
                             <td><br></td>
@@ -64,7 +64,7 @@ Released   : 20121012
                         <tr>
                             
                             <td>Password:</td>
-                            <td><input type="password" name="password" required></td>
+                            <td><input type="password" name="password" placeholder="* * * * * * *" required></td>
                         </tr>
 
                         <tr>
@@ -80,13 +80,48 @@ Released   : 20121012
         </div>
     </div>
     <div id="footer">
-        <p>Khattar Group Center,  Semkanieh El Chouf,  Lebanon</p>
-        <p>Website : <a target="_blank" rel="noopener noreferrer" href="http://khattar-group.com/" style="color:blue"> khattar-group.com</a></p>
+        <p>Copyright © 2020 Modern University for Business & Science</p>
+        <p>Website : <a target="_blank" rel="noopener noreferrer" href="https://www.mubs.edu.lb/" style="color:blue"> MUBS.EDU.LB</a></p>
         <p>&copy; Design by MTH Team</p>
     </div>
-
-    <!-- end #footer -->
-
 </body>
+<?php
+                    session_start();
 
+                    if (isset( $_POST['userName']) && isset($_POST['password']))
+                    {
+                        $userName =$_POST['userName'];
+                        $password = $_POST['password'];
+                    }
+                    else
+                    die;
+                    
+
+                    // include class data base manger to connect with the data base
+                    require_once('DatabaseManager.php');
+
+                    // new object of the class
+                    $Connection = new DatabaseManager();
+
+                    //select query to check the login 
+                    $query = "SELECT adminName, adminPassword from admin WHERE adminName ='".$userName."' and adminPassword='".$password."'";
+
+                    // result of the query set in variable login
+                    $login = $Connection->selectQuery($query);
+
+                    if (count($login)==1){
+                        //echo "Login Success !!";
+                        $_SESSION['userName'] = $login[0]["adminName"];
+                        $_SESSION['password'] = $login[0]["adminPassword"];
+                        header("Location:studentPage.php");
+                    
+                    }
+                    else{
+                        //echo "Login Failed!!!";
+                        header("Location:login.php");
+                    }
+                    
+                    var_dump($_SESSION);// to show array if we get info or no
+                    
+                    ?>
 </html>

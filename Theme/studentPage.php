@@ -1,14 +1,30 @@
 <?php require_once("header.php");?>
     
     <div id="banner">
-         <p id="p1">Select a Semester:
-            <select class="browser-default custom-select">   
-                <option value="volvo">Select a Semester</option>     
-                <option value="volvo">Spring 2019 - 2020</option>
-                <option value="saab">Fall 2019 - 2020</option>
-                <option value="mercedes">Summer 2018 - 2019</option>
-                <option value="audi">Spring 2018 - 2019</option>
-            </select>
+            <div class="form-group">
+                <label for="sel1">Select a Semester:</label>
+                  <select class="form-control" id="sel1">
+                    <?php
+                        // include class data base manger to connect with the data base
+                        require_once('DatabaseManager.php');
+
+                        // new object of the class
+                        $Connection = new DatabaseManager();
+
+                        //select query to check the login 
+                        $query = "SELECT * from semester";
+
+                        // result of the query set in variable login
+                        $studentCoursePage = $Connection->selectQuery($query);
+
+                       foreach ($studentCoursePage as $semester)
+                       {
+                         echo "<option value=".$semester["semsterID"].">".$semester["semsterYear"]." ".$semester["semsterSeason"]."</option>";
+                       }
+                        
+                    ?>
+                  </select>
+            </div>
         </p>
 
         <table style="width: 100%" align="center" border="1">
@@ -26,7 +42,7 @@
                  <td align="center">Folder</td>
             </tr>
             <tr>
-                 <td align="center">Codes</td>
+                 <td align="center"><?php  ?></td>
                  <td align="center">Course</td>
                  <td align="center">Schedule</td>
                  <td align="center">Teacher</td>
