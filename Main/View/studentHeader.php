@@ -17,6 +17,7 @@ Released   : 20121012
     <meta name="description" content="" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>University Management System</title>
+        
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -38,10 +39,11 @@ Released   : 20121012
         <!-- end #header -->
         <div id="menu">
             <ul>
-                <li class="current_page_item"><a href="#">Classes</a></li>
-                <li><a href="#">Registration</a></li>
-                <li><a href="#">Profile</a></li>
-                <li class="last"><a href="#">Log Out</a></li>
+                <li
+                ><a href="studentClasses.php">Classes</a></li>
+                <li><a href="studentRegistration.php">Registration</a></li>
+                <li><a href="studentProfile.php">Profile</a></li>
+                <li class="last"><a href="Login.php">Log Out</a></li>
             </ul>
         </div>
         
