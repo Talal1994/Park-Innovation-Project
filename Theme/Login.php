@@ -35,7 +35,7 @@ Released   : 20121012
                             <img src="https://rinnoo.net/f/CMS/Listings/4883_1524723_580532172035743_1207853981_N_-_Qu80_RT1600x1024-_OS200x200-_RD200x200-.jpg" width="180" height="130">
                         </td>
                         <td width="130"></td>
-                        
+
                         <td>
                             <h1>MUBS - UMS</h1>
                         </td>
@@ -62,7 +62,7 @@ Released   : 20121012
                         </tr>
 
                         <tr>
-                            
+
                             <td>Password:</td>
                             <td><input type="password" name="password" placeholder="* * * * * * *" required></td>
                         </tr>
@@ -72,7 +72,7 @@ Released   : 20121012
                         </tr>
 
                         <tr>
-                            <td colspan="2" style="text-align: center;"><input type="submit" value="Login" ></td>
+                            <td colspan="2" style="text-align: center;"><input type="submit" value="Login"></td>
                         </tr>
                     </table>
                 </form>
@@ -86,42 +86,39 @@ Released   : 20121012
     </div>
 </body>
 <?php
-                    session_start();
+session_start();
 
-                    if (isset( $_POST['userName']) && isset($_POST['password']))
-                    {
-                        $userName =$_POST['userName'];
-                        $password = $_POST['password'];
-                    }
-                    else
-                    die;
-                    
+if (isset($_POST['userName']) && isset($_POST['password'])) {
+    $userName = $_POST['userName'];
+    $password = $_POST['password'];
+} else
+    die;
 
-                    // include class data base manger to connect with the data base
-                    require_once('DatabaseManager.php');
 
-                    // new object of the class
-                    $Connection = new DatabaseManager();
+// include class data base manger to connect with the data base
+require_once('DatabaseManager.php');
 
-                    //select query to check the login 
-                    $query = "SELECT adminName, adminPassword from admin WHERE adminName ='".$userName."' and adminPassword='".$password."'";
+// new object of the class
+$Connection = new DatabaseManager();
 
-                    // result of the query set in variable login
-                    $login = $Connection->selectQuery($query);
+//select query to check the login 
+$query = "SELECT adminName, adminPassword from admin WHERE adminName ='" . $userName . "' and adminPassword='" . $password . "'";
 
-                    if (count($login)==1){
-                        //echo "Login Success !!";
-                        $_SESSION['userName'] = $login[0]["adminName"];
-                        $_SESSION['password'] = $login[0]["adminPassword"];
-                        header("Location:studentPage.php");
-                    
-                    }
-                    else{
-                        //echo "Login Failed!!!";
-                        header("Location:login.php");
-                    }
-                    
-                    var_dump($_SESSION);// to show array if we get info or no
-                    
-                    ?>
+// result of the query set in variable login
+$login = $Connection->selectQuery($query);
+
+if (count($login) == 1) {
+    //echo "Login Success !!";
+    $_SESSION['userName'] = $login[0]["adminName"];
+    $_SESSION['password'] = $login[0]["adminPassword"];
+    header("Location:studentPage.php");
+} else {
+    //echo "Login Failed!!!";
+    header("Location:login.php");
+}
+
+var_dump($_SESSION); // to show array if we get info or no
+
+?>
+
 </html>
