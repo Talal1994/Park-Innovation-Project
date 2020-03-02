@@ -10,6 +10,9 @@ Version    : 1.0
 Released   : 20121012
 
 -->
+<?php
+session_reset();
+?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -18,7 +21,7 @@ Released   : 20121012
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>University Management System - Login</title>
     <link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
-    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../CSS/style.css" rel="stylesheet" type="text/css" media="screen" />
     <style type="text/css">
         @import "gallery.css";
     </style>
@@ -51,7 +54,7 @@ Released   : 20121012
         <div id="banner">
 
             <center>
-                <form method="POST">
+                <form method="POST" action="../Controller/verifyLogin.php">
                     <table>
                         <tr>
                             <td>UserName:</td>
@@ -85,82 +88,4 @@ Released   : 20121012
         <p>&copy; Design by MTH Team</p>
     </div>
 </body>
-<?php
-<<<<<<< HEAD:Main/View/Login.php
-    session_start();
-
-    if (isset( $_POST['userName']) && isset($_POST['password']))
-    {
-      $userName =$_POST['userName'];
-      $password = $_POST['password'];
-    }
-    else
-    die;    
-
-    // include class data base manger to connect with the data base
-    require_once('DatabaseManager.php');
-
-    // new object of the class
-    $Connection = new DatabaseManager();
-
-    //select query to check the login 
-    $query = "SELECT adminName, adminPassword from admin WHERE adminName ='".$userName."' and adminPassword='".$password."'";
-
-    // result of the query set in variable login
-    $login = $Connection->selectQuery($query);
-
-    if (count($login)==1)
-    {
-        //echo "Login Success !!";
-        $_SESSION['userName'] = $login[0]["adminName"];
-        $_SESSION['password'] = $login[0]["adminPassword"];
-        header("Location:studentClasses.php");
-                    
-    }
-    else
-    {
-        //echo "Login Failed!!!";
-        header("Location:login.php");
-    }
-                    
-    var_dump($_SESSION);// to show array if we get info or no
-                    
-    ?>
-=======
-session_start();
-
-if (isset($_POST['userName']) && isset($_POST['password'])) {
-    $userName = $_POST['userName'];
-    $password = $_POST['password'];
-} else
-    die;
-
-
-// include class data base manger to connect with the data base
-require_once('DatabaseManager.php');
-
-// new object of the class
-$Connection = new DatabaseManager();
-
-//select query to check the login 
-$query = "SELECT adminName, adminPassword from admin WHERE adminName ='" . $userName . "' and adminPassword='" . $password . "'";
-
-// result of the query set in variable login
-$login = $Connection->selectQuery($query);
-
-if (count($login) == 1) {
-    //echo "Login Success !!";
-    $_SESSION['userName'] = $login[0]["adminName"];
-    $_SESSION['password'] = $login[0]["adminPassword"];
-    header("Location:studentPage.php");
-} else {
-    //echo "Login Failed!!!";
-    header("Location:login.php");
-}
-
-var_dump($_SESSION); // to show array if we get info or no
-
-?>
-
->>>>>>> 9c3a512d89d1ea5324400c443e72f9e39f83119c:Theme/Login.php
 </html>

@@ -6,7 +6,7 @@
           <select class="form-control" id="sel1">
             <?php
             // include class data base manger to connect with the data base
-            require_once('DatabaseManager.php');
+            require_once('../../Model/DatabaseManager.php');
 
             // new object of the class
             $Connection = new DatabaseManager();

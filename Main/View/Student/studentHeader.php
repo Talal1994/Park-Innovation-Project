@@ -22,7 +22,7 @@ Released   : 20121012
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
-    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../../CSS/style.css" rel="stylesheet" type="text/css" media="screen" />
     <style type="text/css">
         @import "gallery.css";
     </style>
@@ -39,18 +39,10 @@ Released   : 20121012
         <!-- end #header -->
         <div id="menu">
             <ul>
-<<<<<<< HEAD:Main/View/studentHeader.php
                 <li
                 ><a href="studentClasses.php">Classes</a></li>
                 <li><a href="studentRegistration.php">Registration</a></li>
                 <li><a href="studentProfile.php">Profile</a></li>
-                <li class="last"><a href="Login.php">Log Out</a></li>
-=======
-                <li class="current_page_item"><a href="#"> Classes </a></li>
-                <li><a href="CourseOffering"> Courses </a></li>
-                <li><a href="newTeacher.php"> Teachers </a></li>
-                <li><a href="newStudent.php"> Students </a></li>
-                <li class="last"><a href="loginStudent.php"> Log Out </a></li>
->>>>>>> 9c3a512d89d1ea5324400c443e72f9e39f83119c:Theme/header.php
+                <li class="last"><a href="../Login.php">Log Out</a></li>
             </ul>
         </div>
