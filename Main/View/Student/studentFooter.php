@@ -1,8 +1,7 @@
-</div>
-<div id="footer">
-        <p>&copy; Design by MTH Team</p>
-    </div>
-    <!-- end #footer -->
-</body>
+<html>
+    <center><div class="studentHeader">
 
+        <p style="margin-top: 160px">&copy; Design by MTH Team</p>
+
+    </div></center>
 </html>
